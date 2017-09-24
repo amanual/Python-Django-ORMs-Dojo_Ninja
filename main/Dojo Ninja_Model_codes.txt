@@ -1,0 +1,45 @@
+from apps.dojo_ninjas.models import *
+
+# Using Django Shell:
+# Create 3 dojos using Dojo.objects.create
+Dojo.objects.create(name = "Amanual Geberemariam",city = "Arlington", state = "VA")
+Dojo.objects.create(name = "Gemechu", city = "Baltimore", state = "MD")
+Dojo.objects.create(name = "Sam", city = "Firfax", state = "VA")
+
+# Delete the three dojos you created (e.g. Dojo.objects.get(id=1).delete())
+Dojo.objects.get(id =1).delete()
+Dojo.objects.get(id =2).delete()
+Dojo.objects.get(id =3).delete()
+
+# Create 3 additional dojos in another way
+b = Dojo.objects.create(name = "D2",city = "Baltimore",state= "MD")
+b = Dojo.objects.create(name = "Tim",city = "Mauntain view",state= "CA")
+b = Dojo.objects.create(name = "Tom",city = "Mekelle",state= "TY")
+
+# Create 3 ninjas that belong to the first dojo you created.(Note: One-to_Many relationship)
+Ninja.objects.create(dojo=Dojo.objects.get(id=1),first_name = "Getnet",last_name="Haile")
+Ninja.objects.create(dojo=Dojo.objects.get(id = 2),first_name = "Tseday",last_name="Abrha")
+Ninja.objects.create(dojo=Dojo.objects.get(id=3),first_name = "keith",last_name="Jack")
+
+# Create 3 more ninjas and have them belong to the second dojo you created.
+Ninja.objects.create(dojo=Dojo.objects.get(id=4),first_name = "Falmawit",last_name="Hailemariam")
+Ninja.objects.create(dojo=Dojo.objects.get(id=5),first_name = "Tsegazeab",last_name="Geberemariam")
+Ninja.objects.create(dojo=Dojo.objects.get(id=6),first_name = "Brikty",last_name="Geberemariam")
+
+# Create 3 more ninjas and have them belong to the third dojo you created.
+Ninja.objects.create(dojo=Dojo.objects.get(id=7),first_name = "Filmon",last_name="Geberemariam")
+Ninja.objects.create(dojo=Dojo.objects.get(id = 8),first_name = "Helen",last_name="Ermias")
+Ninja.objects.create(dojo=Dojo.objects.get(id = 9),first_name = "Hana",last_name="Kebede")
+
+# Add a new field in the Dojo class (found in your models.py) called 'desc'. Allow 'desc' to hold long text (more than 255 characters).
+# To forward engineer the change, run the appropriate migration commands.
+# Successfully run the migration files and check the records to make sure the new field was added successfully.
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+from apps.dojo_ninjas.models import *
+Dojo.objects.get(id=1).desc
+
+
+
